@@ -1,9 +1,9 @@
 # yelp-dataset-challenge
 ILS - Z534 Yelp Dataset Challenge
 
-Group 4 Team Members:  
-1. Dhvani Deven Kotak  
-2. Manikandan Murugesan  
-3. Rohit Dandona  
-4. Vikrant Kaushal  
-5. Yash Sumant Ketkar
+## Group 4 Team Members:
+* [Dhvani Deven Kotak](https://github.com/dhvanikotak) (dkotak@indiana.edu)  
+* [Manikandan Murugesan](https://github.com/manikandan5) (murugesm@indiana.edu)  
+* [Rohit Dandona](https://github.com/rohitdandona) (rdandona@indiana.edu)  
+* [Vikrant Kaushal](https://github.com/KaushalVikrant) (vkaushal@indiana.edu)  
+* [Yash Sumant Ketkar](https://github.com/yashketkar) (yketkar@indiana.edu)  
