@@ -45,12 +45,14 @@ with open(Parameters.DATASET_FILE +'yelp_academic_dataset_business.json') as dat
                  "_id": data["business_id"]
                })
 
-
+n=0
 with open(Parameters.DATASET_FILE +'yelp_academic_dataset_review.json') as dataset:
     for line in dataset:
         data = json.loads(line)
         isRestaurant = business_collection.find({"_id": data["business_id"]}).count();
-        if data["type"] == "review"   and isRestaurant !=0:
+        n+=1
+        print n
+        if data["type"] == "review" and isRestaurant !=0:
             reviews_collection.insert({
             "reviewId": data["review_id"],
             "business": data["business_id"],
@@ -68,44 +70,10 @@ with open(Parameters.DATASET_FILE +'yelp_academic_dataset_review.json') as datas
                     if tag in ['NN','NNS'] :
                         words.append(lmtzr.lemmatize(word))
             corpus_collection.insert({
-                  "reviewId": review["reviewId"],
-                  "business": review["business"],
-                  "stars": review['stars'],
-                  "votes":review["votes"],
-                  "text": review["text"],
+                  "reviewId": data["reviewId"],
+                  "business": data["business"],
+                  "stars": data['stars'],
+                  "votes":data["votes"],
+                  "text": data["text"],
                   "words": words
             })
-
-
-
-
-# review_cursor = reviews_collection.find()
-# print review_cursor.count()
-#
-# for i in range(review_cursor.count()):
-#         try :
-#              review =review_cursor.__getitem__(i)
-#         except Exception:
-#              print 'Exceptions..!!!!!!'
-#              continue
-#
-#         words = []
-#
-#         sentences = nltk.sent_tokenize(review['text'].lower())
-#         for sentence in sentences:
-#                 tokens = nltk.word_tokenize(sentence)
-#                 filteredWords = [word for word in tokens if word not in stopwords]
-#                 tagged_text = nltk.pos_tag(filteredWords)
-#
-#                 for word, tag in tagged_text:
-#                     if tag in ['NN','NNS'] :
-#                         words.append(lmtzr.lemmatize(word))
-#
-#         corpus_collection.insert({
-#               "reviewId": review["reviewId"],
-#               "business": review["business"],
-#               "stars": review['stars'],
-#               "votes":review["votes"],
-#               "text": review["text"],
-#               "words": words
-#         })
