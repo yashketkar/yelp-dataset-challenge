@@ -37,13 +37,9 @@ lmtzr = WordNetLemmatizer()
 
 with open(Parameters.DATASET_FILE +'yelp_academic_dataset_business.json') as dataset:
     for line in dataset:
-
-            data = json.loads(line)
-
-            if 'Restaurants' in data["categories"] and data['city'] == 'Phoenix':
-               business_collection.insert({
-                 "_id": data["business_id"]
-               })
+        data = json.loads(line)
+        if 'Restaurants' in data["categories"] and data['city'] == 'Phoenix':
+            business_collection.insert({"_id": data["business_id"]})
 
 n=0
 with open(Parameters.DATASET_FILE +'yelp_academic_dataset_review.json') as dataset:
@@ -70,8 +66,8 @@ with open(Parameters.DATASET_FILE +'yelp_academic_dataset_review.json') as datas
                     if tag in ['NN','NNS'] :
                         words.append(lmtzr.lemmatize(word))
             corpus_collection.insert({
-                  "reviewId": data["reviewId"],
-                  "business": data["business"],
+                  "reviewId": data["review_id"],
+                  "business": data["business_id"],
                   "stars": data['stars'],
                   "votes":data["votes"],
                   "text": data["text"],
