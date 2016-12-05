@@ -1,6 +1,4 @@
 from pymongo import MongoClient
-
-__author__ = 'Parry'
 from gensim.models import LdaModel
 from gensim import corpora
 from Constants import Parameters
@@ -11,9 +9,10 @@ dictionary = corpora.Dictionary.load(Parameters.Dictionary_path)
 corpus = corpora.BleiCorpus(Parameters.Corpus_path)
 lda = LdaModel.load(Parameters.Lda_model_path)
 
-corpus_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.CORPUS_COLLECTION]
-business_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.BUSINESS_COLLECTION]
-rating_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.TOPIC_RATING_COLLECTION]
+business_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Business"]
+corpus_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Corpus"]
+rating_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["TopicRating"]
+
 i=0
 business_cursor = business_collection.find()
 corpus_cursor = corpus_collection.find()

@@ -1,6 +1,5 @@
 from gensim.models import LdaModel
 from gensim import corpora
-
 from Constants import Parameters
 
 dictionary = corpora.Dictionary.load(Parameters.Dictionary_path)

@@ -5,7 +5,6 @@ from Constants import Parameters
 from pymongo import MongoClient
 
 reviews_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Reviews"]
-
 business_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Business2"]
 
 with open(Parameters.DATASET_FILE +'yelp_academic_dataset_business.json') as dataset:

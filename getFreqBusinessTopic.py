@@ -3,16 +3,12 @@ import time
 import json
 from Constants import Parameters
 from pymongo import MongoClient
-
 from collections import Counter,defaultdict
-reviews_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][
-    Parameters.REVIEWS_COLLECTION]
 
-business_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][
-    Parameters.BUSINESS_INFO_COLLECTION]
+reviews_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Reviews"]
+business_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Business2"]
+topic_rating_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["TopicRating"]
 
-
-topic_rating_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.TOPIC_RATING_COLLECTION]
 def getBest(num):
     count =  Counter();
     ave = Counter();
