@@ -11,19 +11,12 @@ dictionary = corpora.Dictionary.load(Parameters.Dictionary_path)
 corpus = corpora.BleiCorpus(Parameters.Corpus_path)
 lda = LdaModel.load(Parameters.Lda_model_path)
 
-
-
 corpus_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.CORPUS_COLLECTION]
-business_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][
-    Parameters.BUSINESS_COLLECTION]
-
-rating_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][
-    Parameters.TOPIC_RATING_COLLECTION]
+business_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.BUSINESS_COLLECTION]
+rating_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.TOPIC_RATING_COLLECTION]
 i=0
 business_cursor = business_collection.find()
 corpus_cursor = corpus_collection.find()
-
-
 
 for i in range(business_cursor.count()):
         try :
