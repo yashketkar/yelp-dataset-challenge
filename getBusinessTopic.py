@@ -4,22 +4,14 @@ import json
 from Constants import Parameters
 from pymongo import MongoClient
 
-
-reviews_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][
-    Parameters.REVIEWS_COLLECTION]
-
-business_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][
-    Parameters.BUSINESS_INFO_COLLECTION]
-
-
-topic_rating_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.TOPIC_RATING_COLLECTION]
+reviews_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Reviews"]
+business_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Business"]
+topic_rating_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["TopicRating"]
 
 topic_id = 50
-def find_by_topic_id(topic_id, rating):
 
-#result = topic_rating_collection.find_one()
+def find_by_topic_id(topic_id, rating):
     result = topic_rating_collection.find({'ratings.'+str(topic_id):{'$gt': int(rating) }})
-#returns valid collection
     businesses = []
     for a in result:
         fetched_business = {}

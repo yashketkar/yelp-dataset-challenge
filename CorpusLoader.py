@@ -6,26 +6,9 @@ from nltk import WordNetLemmatizer
 from nltk.corpus import stopwords
 from pymongo import MongoClient
 
-class Parameters:
-    def __init__(self):
-        pass
-    DATASET_FILE = '../yelp_dataset_challenge_academic_dataset/'
-    MONGO_CONNECTION_STRING = "mongodb://localhost:27017/"
-    REVIEWS_DATABASE = "Dataset_Challenge_Reviews"
-    REVIEWS_COLLECTION = "Reviews"
-    BUSINESS_COLLECTION = 'Business'
-    TOPIC_RATING_COLLECTION ='TopicRating'
-    CORPUS_COLLECTION = "Corpus"
-    BUSINESS_INFO_COLLECTION ="BusinessInfo"
-
-    Dictionary_path = "DataModels/dictionary.dict"
-    Corpus_path = "DataModels/corpus.mm"
-    Lda_num_topics = 60
-    Lda_model_path = "DataModels/lda_model_topics.lda"
-
-reviews_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.REVIEWS_COLLECTION]
-business_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.BUSINESS_COLLECTION]
-corpus_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.CORPUS_COLLECTION]
+reviews_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Reviews"]
+business_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Business"]
+corpus_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Corpus"]
 
 stopset = set(stopwords.words('english'))
 stopwords = {}
@@ -35,14 +18,14 @@ with open('stopwords.txt', 'rU') as f:
 # print stopwords
 lmtzr = WordNetLemmatizer()
 
-with open(Parameters.DATASET_FILE +'yelp_academic_dataset_business.json') as dataset:
+with open('../yelp_dataset_challenge_academic_dataset/yelp_academic_dataset_business.json') as dataset:
     for line in dataset:
         data = json.loads(line)
         if 'Restaurants' in data["categories"] and data['city'] == 'Phoenix':
             business_collection.insert({"_id": data["business_id"]})
 
 n=0
-with open(Parameters.DATASET_FILE +'yelp_academic_dataset_review.json') as dataset:
+with open('../yelp_dataset_challenge_academic_dataset/yelp_academic_dataset_review.json') as dataset:
     for line in dataset:
         data = json.loads(line)
         # isRestaurant =
