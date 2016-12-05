@@ -1,9 +1,6 @@
-__author__ = 'Parry'
 class Parameters:
     def __init__(self):
         pass
-
-
     DATASET_FILE = '../yelp_dataset_challenge_academic_dataset/'
     MONGO_CONNECTION_STRING = "mongodb://localhost:27017/"
     REVIEWS_DATABASE = "Dataset_Challenge_Reviews"

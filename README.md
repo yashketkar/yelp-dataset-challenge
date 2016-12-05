@@ -10,9 +10,6 @@ ILS - Z534 Yelp Dataset Challenge
 
 Task 2
 
-User Manual
------------
-
 Configuration used for executing scripts and deploying the application:
 Python Version - 2.7.12
 MongoDB Version - 3.4
@@ -20,30 +17,37 @@ MongoDB Version - 3.4
 Installation
 ------------
 - Download and extract the source files and yelp dataset.
+- Run `pip install pymongo`
+- Run `pip install nltk`
+- Run import nltk and nltk.download() in a python shell
+- Run `pip install gensim`
+- Run `pip install bottle`
 
-- The following steps perform various computations to generate Topics & a link of database dump is provided in the end.
+Order to run the files and use.
+- python CorpusLoader.py
+	- Populates the reviews for Phoenix from the dataset json where type of business equals to the restaurant
+	- Makes Reviews more simplified for Online Analysis
 
-	- python Loader.py
-		- Depency - pymongo. Run `pip install pymongo`
-		- Populates the reviews for Phoenix from the dataset json where type of business equals to the restaurant
+- python OnlineLDA.py
+	- Gensim python library creates a LDA model for different reviews.
 
-	- python Normalizer.py
-		- Dependency - nltk. Run `pip install nltk`. Also nltk corpus data, So need to import nltk and run nltk.download() in a python shell
-		- Makes Reviews more simplified for Online Analysis
+- python ShowTopics.py
+	- Displays the six major topics and the sub-topics with maximum weightages Respectively
+	- All 60 topics were categorised so as to highlight the sub-topic they represent
+	- The 60 subtopics highlighted in _topics.txt_
 
-	- python OnlineLDA.py
-		- Dependency - gensim. Run `pip install gensim`
-		- Gensim python library creates a LDA model for different reviews.
+- python getBusinessRating.py
+ - Create Ratings Collection in MongoDB
 
-	- python ShowTopics.py
-		- Displays the six major topics and the sub-topics with maximum weightages Respectively
-		- All 60 topics were categorised so as to highlight the sub-topic they represent
-		- The 60 subtopics highlighted in _topics.txt_
+- python getBusinessInfo.py
+ - Create Business Info Collection in MongoDB
 
-	The required data is now computed and a few auxiliary scripts are present in the .tar.gz which are used to generate other graphs like Business Frequency Topic was plotted by data generated using : `getFreqBusinessTopic.py`
+- python 'getBusinessTopic.py'
+ - Running the Graphical User Interface
+ - Creates a web server listening at http://localhost:8030/ which renders the application
 
--Running the Graphical User Interface
+- python getFreqBusinessTopic.py
+ - Business Frequency Topic is plotted by data generated
 
-	- python 'getBusinessTopic.py'
-		- Dependency - bottle. Run `pip install bottle`
-		- Creates a web server listening at 0.0.0.0:8030 which renders the application
+- python ShowTopicsForReview.py
+ - Displays the topics for review.
