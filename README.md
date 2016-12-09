@@ -28,10 +28,10 @@ Order to run the files and use.
 	- Populates the reviews for Phoenix from the dataset json where type of business equals to the restaurant
 	- Makes Reviews more simplified for Online Analysis
 
-- python OnlineLDA.py
+- python TopicModelling.py
 	- Gensim python library creates a LDA model for different reviews.
 
-- python ShowTopics.py
+- python DisplayTopics.py
 	- Displays the six major topics and the sub-topics with maximum weightages Respectively
 	- All 60 topics were categorised so as to highlight the sub-topic they represent
 	- The 60 subtopics highlighted in _topics.txt_
