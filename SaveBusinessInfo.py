@@ -1,7 +1,6 @@
 import os
 import time
 import json
-from Constants import Parameters
 from pymongo import MongoClient
 
 reviews_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Reviews"]

@@ -1,13 +1,12 @@
 from pymongo import MongoClient
 from gensim.models import LdaModel
 from gensim import corpora
-from Constants import Parameters
-import json
 from collections import Counter,defaultdict
+import json
 
-dictionary = corpora.Dictionary.load(Parameters.Dictionary_path)
-corpus = corpora.BleiCorpus(Parameters.Corpus_path)
-lda = LdaModel.load(Parameters.Lda_model_path)
+dictionary = corpora.Dictionary.load("DataModels/dictionary.dict")
+corpus = corpora.BleiCorpus("DataModels/corpus.mm")
+lda = LdaModel.load("DataModels/lda_model_topics.lda")
 
 business_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Business"]
 corpus_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Corpus"]
@@ -28,13 +27,11 @@ for i in range(business_cursor.count()):
         score_count =Counter()
         corpus_cursor =corpus_collection.find({"business": business["_id"]})
         for corpus in corpus_cursor:
-            print 'My Rating******'
-            topics =  lda[dictionary.doc2bow(corpus["words"])]
+            topics = lda[dictionary.doc2bow(corpus["words"])]
             for topic,prob in topics:
                 prob_count[topic]+=prob
                 score_count[topic]+=corpus["stars"]
                 count[topic]+=1
-           #     print topic , prob
 
         avg =defaultdict()
         fcount = defaultdict()

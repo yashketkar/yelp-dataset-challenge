@@ -1,7 +1,6 @@
 import os
 import time
 import json
-from Constants import Parameters
 from pymongo import MongoClient
 from collections import Counter,defaultdict
 
@@ -17,9 +16,9 @@ def getBest(num):
         result = topic_rating_collection.find({'ratings.'+str(topic_id):{'$exists':True}})
         temp =0
         for a in result:
-             temp =temp+int(a['ratings'][str(topic_id)])
+             temp = temp + int(a['ratings'][str(topic_id)])
        # print temp
-        ave[topic_id] =temp /result.count()
+        ave[topic_id] = temp/result.count()
         count[topic_id] = result.count()
     #returns valid collection
     #print count.most_common(5)

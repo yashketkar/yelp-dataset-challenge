@@ -1,13 +1,12 @@
 from pymongo import MongoClient
 from gensim.models import LdaModel
 from gensim import corpora
-from Constants import Parameters
 
-dictionary = corpora.Dictionary.load(Parameters.Dictionary_path)
-corpus = corpora.BleiCorpus(Parameters.Corpus_path)
-lda = LdaModel.load(Parameters.Lda_model_path)
+dictionary = corpora.Dictionary.load("DataModels/dictionary.dict")
+corpus = corpora.BleiCorpus("DataModels/corpus.mm")
+lda = LdaModel.load("DataModels/lda_model_topics.lda")
 
-corpus_collection = MongoClient(Parameters.MONGO_CONNECTION_STRING)[Parameters.REVIEWS_DATABASE][Parameters.CORPUS_COLLECTION]
+corpus_collection = MongoClient("mongodb://localhost:27017/")["Dataset_Challenge_Reviews"]["Corpus"]
 
 i=0
 corpus_cursor = corpus_collection.find()

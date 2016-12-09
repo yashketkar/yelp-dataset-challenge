@@ -16,10 +16,11 @@ MongoDB Version - 3.4
 
 Installation
 ------------
+Dependencies
 - Download and extract the source files and yelp dataset.
 - Run `pip install pymongo`
 - Run `pip install nltk`
-- Run import nltk and nltk.download() in a python shell
+- Run `import nltk` and `nltk.download()` in a python shell
 - Run `pip install gensim`
 - Run `pip install bottle`
 
@@ -39,15 +40,14 @@ Order to run the files and use.
 - python getBusinessRating.py
  - Create Ratings Collection in MongoDB
 
-- python getBusinessInfo.py
+- python SaveBusinessInfo.py
  - Create Business Info Collection in MongoDB
-
-- python 'getBusinessTopic.py'
- - Running the Graphical User Interface
- - Creates a web server listening at http://localhost:8030/ which renders the application
 
 - python getFreqBusinessTopic.py
  - Business Frequency Topic is plotted by data generated
 
 - python ShowTopicsForReview.py
  - Displays the topics for review.
+
+- iPython Google_Maps_Heat_Map.ipynb
+ - Displays a heatmap of restaurants based on topic
