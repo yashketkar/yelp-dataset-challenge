@@ -15,7 +15,6 @@ stopwords = {}
 with open('stopwords.txt', 'rU') as f:
     for line in f:
         stopwords[line.strip()] = 1
-# print stopwords
 lmtzr = WordNetLemmatizer()
 
 with open('../yelp_dataset_challenge_academic_dataset/yelp_academic_dataset_business.json') as dataset:
