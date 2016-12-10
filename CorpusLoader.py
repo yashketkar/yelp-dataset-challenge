@@ -27,7 +27,6 @@ n=0
 with open('../yelp_dataset_challenge_academic_dataset/yelp_academic_dataset_review.json') as dataset:
     for line in dataset:
         data = json.loads(line)
-        # isRestaurant =
         if data["type"] == "review" and business_collection.find({"_id": data["business_id"]}).count() !=0:
             n+=1
             print n

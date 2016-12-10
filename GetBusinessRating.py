@@ -33,7 +33,7 @@ for i in range(business_cursor.count()):
                 score_count[topic]+=corpus["stars"]
                 count[topic]+=1
 
-        avg =defaultdict()
+        avg = defaultdict()
         fcount = defaultdict()
         for topics in score_count.keys():
             avg[topics]= 1.0*score_count[topics]/count[topics]

@@ -9,6 +9,6 @@ print lda.num_topics
 print ''
 print '$$$$$$$$$$$$$$$$$$'
 i = 0
-for topic in lda.show_topics(num_topics=Parameters.Lda_num_topics):
+for topic in lda.show_topics(num_topics=60):
     print '#' + str(i) + ': ' + str(topic)
     i += 1
