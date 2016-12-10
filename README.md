@@ -26,28 +26,29 @@ Dependencies
 
 Order to run the files and use.
 - python CorpusLoader.py
-	- Populates the reviews for Phoenix from the dataset json where type of business equals to the restaurant
-	- Makes Reviews more simplified for Online Analysis
+ - Populates the reviews for Phoenix, Arizona from the dataset JSON files where type of business equals to the restaurant.
+ - Makes reviews more simplified for analysis by using nltk.
 
 - python TopicModelling.py
-	- Gensim python library creates a LDA model for different reviews.
+ - Gensim python library creates a LDA model for different reviews.
 
 - python DisplayTopics.py
-	- Displays the six major topics and the sub-topics with maximum weightages Respectively
-	- All 60 topics were categorised so as to highlight the sub-topic they represent
-	- The 60 subtopics highlighted in _topics.txt_
+ - Displays the six major topics and the sub-topics with maximum weightages respectively.
+ - All 60 topics were categorized so as to highlight the sub-topic they represent.
+ - The 60 subtopics highlighted in topics.txt
 
-- python getBusinessRating.py
- - Create Ratings Collection in MongoDB
+- python GetBusinessRating.py
+ - Create Ratings Collection in MongoDB.
 
 - python SaveBusinessInfo.py
- - Create Business Info Collection in MongoDB
+ - Create Business Info Collection in MongoDB.
 
-- python getFreqBusinessTopic.py
- - Business Frequency Topic is plotted by data generated
+- python GetTop10BusinessTopic.py
+ - Business Frequency Topic is plotted by data generated.
 
-- python ShowTopicsForReview.py
+- python DisplayTopicsForReview.py
  - Displays the topics for review.
 
-- iPython Google_Maps_Heat_Map.ipynb
+- Open Google_Maps_Heat_Map.ipynb in Jupyter Notebook
+ - Enter the topic and rating.
  - Displays a heatmap of restaurants based on topic
