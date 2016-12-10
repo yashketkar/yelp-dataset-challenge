@@ -1,6 +1,5 @@
 from gensim.models import LdaModel
 from gensim import corpora
-from Constants import Parameters
 
 dictionary = corpora.Dictionary.load("DataModels/dictionary.dict")
 corpus = corpora.BleiCorpus("DataModels/corpus.mm")
